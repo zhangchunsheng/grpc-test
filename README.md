@@ -11,6 +11,7 @@ protoc --proto_path=./protos \
 ```
 
 ```shell script
+git clone https://github.com/grpc/grpc grpc-master
 cd grpc-master/examples/node
 npm install
 cd dynamic_codegen
