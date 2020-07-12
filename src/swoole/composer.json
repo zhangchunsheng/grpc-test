@@ -1,0 +1,48 @@
+{
+  "name": "swoole/grpc",
+  "type": "library",
+  "keywords": [
+    "php",
+    "swoole",
+    "coroutine",
+    "grpc",
+    "etcd",
+    "http",
+    "http2",
+    "client"
+  ],
+  "description": "Grpc PHP Client base on Swoole Http2 Coroutine",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "twosee",
+      "email": "twose@qq.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/swoole/etcd-client/issues"
+  },
+  "require": {
+    "php": ">=7.1",
+    "google/protobuf": "^3"
+  },
+  "autoload": {
+    "classmap": [
+      "src/Grpc",
+      "src/Etcd"
+    ],
+    "files": [
+      "src/include/functions.php"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
+    }
+  }
+}

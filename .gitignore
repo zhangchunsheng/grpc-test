@@ -6,3 +6,6 @@ grpc-master.zip
 
 src/php/vendor
 src/php/composer.lock
+
+src/swoole/vendor
+src/swoole/composer.lock
