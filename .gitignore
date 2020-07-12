@@ -3,3 +3,6 @@
 
 grpc-master
 grpc-master.zip
+
+src/php/vendor
+src/php/composer.lock

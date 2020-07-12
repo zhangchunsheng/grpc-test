@@ -1,2 +1,18 @@
 # grpc-test
 grpc test
+
+
+```shell script
+protoc --proto_path=./protos \
+--php_out=./src/php \
+--grpc_out=./src/php \
+--plugin=protoc-gen-grpc=./bins/opt/grpc_php_plugin \
+./protos/helloworld.proto
+```
+
+```shell script
+cd grpc-master/examples/node
+npm install
+cd dynamic_codegen
+node greeter_server.js
+```
