@@ -17,3 +17,14 @@ npm install
 cd dynamic_codegen
 node greeter_server.js
 ```
+
+### swoole
+```shell script
+cd src/swoole/tools
+./generator \
+--proto_path=./../src/Grpc/Proto \
+--php_out=./../src/Grpc \
+--grpc_out=./../src/Grpc \
+--plugin=protoc-gen-grpc=/usr/local/bin/grpc_php_plugin \
+./../src/Grpc/Proto
+```
