@@ -11,7 +11,6 @@ import (
 	"os"
 	"sync"
 	"time"
-	"utils"
 
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
@@ -90,13 +89,11 @@ func (robot *Robot) Connect() error {
 	}
 	if *cert_file != "" {
 		creds, err := credentials.NewClientTLSFromFile(*cert_file, "duoshoubang")
-		utils.CheckErrorPanic(err)
 		options = append(options, grpc.WithTransportCredentials(creds))
 	} else {
 		options = append(options, grpc.WithInsecure())
 	}
 	conn, err := grpc.DialContext(ctx, *reg, options...)
-	utils.CheckErrorPanic(err)
 
 	if err != nil {
 		return errors.Wrap(err, "Client Connect")
@@ -146,7 +143,7 @@ func (robot *Robot) Login(username string) error {
 
 func NewRobot() *Robot {
 	robot := &Robot{}
-	utils.CheckErrorPanic(robot.Connect())
+	robot.Connect()
 
 	return robot
 }
@@ -155,7 +152,7 @@ func main() {
 	flag.Parse()
 
 	robot := NewRobot()
-	utils.CheckErrorPanic(robot.Login(*name))
+	robot.Login(*name)
 	ConsoleLog("登录成功")
 
 	// 监听服务端通知
@@ -174,7 +171,6 @@ func main() {
 				time.Sleep(time.Second)
 				continue
 			}
-			utils.CheckErrorPanic(err)
 			ConsoleLog(reply.Message)
 			if reply.MessageType == pb.HelloReply_CONNECT_FAILED {
 				log.Println("Connect failed.")

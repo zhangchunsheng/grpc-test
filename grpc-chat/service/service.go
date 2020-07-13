@@ -31,7 +31,6 @@ import (
 	"sync"
 	"syscall"
 	"time"
-	"utils"
 
 	"github.com/coreos/etcd/clientv3"
 	"github.com/coreos/etcd/mvcc/mvccpb"
@@ -109,7 +108,6 @@ func (sm *SessionManager) Get(token string) (*Session, error) {
 	}
 
 	_, err = sm.cli.KeepAliveOnce(context.Background(), clientv3.LeaseID(kv.Lease))
-	utils.CheckErrorPanic(err)
 
 	return session, nil
 }
@@ -183,11 +181,11 @@ func (p *ConnectPool) BroadCast(from, message string) {
 
 		} else {
 			log.Printf("From %s to %s\n", from, username)
-			utils.CheckErrorPanic(stream.Send(&pb.HelloReply{
+			stream.Send(&pb.HelloReply{
 				Message:     message,
 				MessageType: pb.HelloReply_NORMAL_MESSAGE,
 				TS:          &timestamp.Timestamp{Seconds: time.Now().Unix()},
-			}))
+			})
 		}
 		return true
 	})
@@ -319,7 +317,7 @@ func NewRemoteChannel(cli *clientv3.Client) *RemoteChannel {
 			buf.Reset()
 			enc = gob.NewEncoder(&buf)
 			command = <-qc.Out
-			utils.CheckErrorPanic(enc.Encode(command))
+			enc.Encode(command)
 			qc.cli.Put(context.Background(),
 				channel,
 				buf.String())
@@ -355,8 +353,6 @@ func main() {
 	connect_pool = &ConnectPool{}
 	etcd_cli, err := NewEtcd3Client()
 
-	utils.CheckErrorPanic(err)
-
 	remote_channel = NewRemoteChannel(etcd_cli)
 	session_manger = NewSessionManager(etcd_cli)
 
@@ -371,11 +367,9 @@ func main() {
 	}()
 
 	lis, err := net.Listen("tcp", GetListen())
-	utils.CheckErrorPanic(err)
 	fmt.Println("Listen on", GetListen())
 
 	err = grpclb.Register(*srv, "127.0.0.1", *port, *reg, time.Second*3, 15) // 注册当前节点到etcd
-	utils.CheckErrorPanic(err)
 	ch := make(chan os.Signal)
 	signal.Notify(ch, syscall.SIGTERM, syscall.SIGINT, syscall.SIGHUP, syscall.SIGQUIT)
 	go func() {
@@ -410,5 +404,5 @@ func main() {
 	pb.RegisterGreeterServer(s, &Service{})
 	fmt.Println("Resiger server success")
 
-	utils.CheckErrorPanic(s.Serve(lis))
+	s.Serve(lis)
 }
