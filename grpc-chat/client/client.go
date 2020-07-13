@@ -159,6 +159,9 @@ func main() {
 	robot.Login(*name)
 	ConsoleLog("登录成功")
 
+    robot.GetChatStream().Send(&pb.HelloRequest{
+        Message: "hello",
+    })
 	// 监听服务端通知
 	go func() {
 		var (
