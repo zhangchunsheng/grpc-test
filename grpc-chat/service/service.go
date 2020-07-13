@@ -247,6 +247,7 @@ func (s *Service) SayHello(stream pb.Greeter_SayHelloServer) error {
 		if err != nil {
 			break
 		}
+		fmt.Sprintf("%s: %s", username, req.Message)
 		ReadyBroadCast(username, fmt.Sprintf("%s: %s", username, req.Message))
 	}
 	return nil
