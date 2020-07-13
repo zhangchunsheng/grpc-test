@@ -1,7 +1,7 @@
 package lib
 
 import (
-	"google.golang.org/grpc/naming"
+	//"google.golang.org/grpc/naming"
 )
 
 func GenUpdates(a, b []string) []*naming.Update {

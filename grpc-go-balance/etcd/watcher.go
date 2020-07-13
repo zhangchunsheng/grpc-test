@@ -6,7 +6,7 @@ import (
 
 	etcd2 "github.com/coreos/etcd/client"
 	"golang.org/x/net/context"
-	"google.golang.org/grpc/naming"
+	//"google.golang.org/grpc/naming"
 )
 
 // watcher is the implementaion of grpc.naming.Watcher
