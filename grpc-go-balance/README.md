@@ -8,10 +8,10 @@ Balance supports etcd and consul as the service register and discovery backend.
 ### etcd
 
 #### client
-go run main.go --reg http://127.0.0.1:2379
+go run example/client/main.go --reg http://127.0.0.1:2379
 
 #### server
-go run main.go --reg http://127.0.0.1:2379
+go run example/server/main.go --reg http://127.0.0.1:2379
 
 
 ### consul
