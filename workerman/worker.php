@@ -8,6 +8,7 @@
 //composer require workerman/workerman
 //composer require react/http-client:^0.5.9
 
+//php worker.php start
 require_once __DIR__ . '/vendor/autoload.php';
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
