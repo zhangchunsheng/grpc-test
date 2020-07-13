@@ -89,6 +89,10 @@ func (robot *Robot) Connect() error {
 	}
 	if *cert_file != "" {
 		creds, err := credentials.NewClientTLSFromFile(*cert_file, "duoshoubang")
+		if err != nil {
+            fmt.Printf("credentials.NewClientTLSFromFile. %s", err.Error())
+            return errors.Wrap(err, "credentials.NewClientTLSFromFile")
+        }
 		options = append(options, grpc.WithTransportCredentials(creds))
 	} else {
 		options = append(options, grpc.WithInsecure())
