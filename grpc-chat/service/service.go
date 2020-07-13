@@ -237,6 +237,14 @@ func (s *Service) SayHello(stream pb.Greeter_SayHelloServer) error {
 		Message:     fmt.Sprintf("Connect success!"),
 		MessageType: pb.HelloReply_CONNECT_SUCCESS,
 	}) // 发送连接成功的提醒
+
+	req, err := stream.Recv()
+    fmt.Sprintf("%s: %s", username, req.Message)
+    if err != nil {
+        fmt.Sprintf("Recv error %s", err.Error())
+        break
+    }
+
 	go func() {
 		<-stream.Context().Done()
 		connect_pool.Del(username) // 用户离开聊天室时, 从连接池中删除它
