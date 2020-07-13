@@ -348,10 +348,12 @@ func StreamInterceptor(srv interface{}, ss grpc.ServerStream, info *grpc.StreamS
 }
 
 func main() {
-	var err error
 	flag.Parse()
 	connect_pool = &ConnectPool{}
 	etcd_cli, err := NewEtcd3Client()
+	if err != nil {
+        return nil, errors.Wrap(err, fmt.Sprintf("NewEtcd3Client failed: %s", err.Error()))
+    }
 
 	remote_channel = NewRemoteChannel(etcd_cli)
 	session_manger = NewSessionManager(etcd_cli)
