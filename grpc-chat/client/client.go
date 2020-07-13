@@ -166,7 +166,6 @@ func main() {
     fmt.Print("> ")
     if err != nil {
         ConsoleLog(fmt.Sprintf("there was error sending data. %s", err.Error()))
-        continue
     }
 	// 监听服务端通知
 	go func() {
