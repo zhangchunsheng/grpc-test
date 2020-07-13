@@ -242,7 +242,6 @@ func (s *Service) SayHello(stream pb.Greeter_SayHelloServer) error {
     fmt.Sprintf("%s: %s", username, req.Message)
     if err != nil {
         fmt.Sprintf("Recv error %s", err.Error())
-        break
     }
 
 	go func() {
