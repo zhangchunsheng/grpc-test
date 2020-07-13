@@ -88,7 +88,7 @@ func (robot *Robot) Connect() error {
 		grpc.WithTimeout(10 * time.Second),
 	}
 	if *cert_file != "" {
-		creds, err := credentials.NewClientTLSFromFile(*cert_file, "duoshoubang")
+		creds, err := credentials.NewClientTLSFromFile(*cert_file, "chat")
 		if err != nil {
             fmt.Printf("credentials.NewClientTLSFromFile. %s", err.Error())
             return errors.Wrap(err, "credentials.NewClientTLSFromFile")
