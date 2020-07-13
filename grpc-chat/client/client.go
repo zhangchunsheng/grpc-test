@@ -5,7 +5,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	grpclb "grpclb/etcdv3"
+	grpclb "etcdv3"
 	"io"
 	"log"
 	"os"
@@ -20,7 +20,7 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
-	pb "grpclb/helloword"
+	pb "helloword"
 )
 
 var name *string = flag.String("name", "guess", "what's your name?")
