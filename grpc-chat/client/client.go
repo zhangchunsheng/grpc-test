@@ -159,9 +159,14 @@ func main() {
 	robot.Login(*name)
 	ConsoleLog("登录成功")
 
-    robot.GetChatStream().Send(&pb.HelloRequest{
+    err = robot.GetChatStream().Send(&pb.HelloRequest{
         Message: "hello",
     })
+    fmt.Print("> ")
+    if err != nil {
+        ConsoleLog(fmt.Sprintf("there was error sending data. %s", err.Error()))
+        continue
+    }
 	// 监听服务端通知
 	go func() {
 		var (
