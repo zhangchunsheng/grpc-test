@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	etcd2 "github.com/coreos/etcd/client"
-	"google.golang.org/grpc/naming"
+	//"google.golang.org/grpc/naming"
 )
 
 // resolver is the implementaion of grpc.naming.Resolver
