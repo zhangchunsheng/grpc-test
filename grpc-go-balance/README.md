@@ -17,7 +17,7 @@ go run example/server/main.go --reg http://127.0.0.1:2379
 ### consul
 
 #### client
-go run main.go --reg 127.0.0.1:8500
+go run example/client/main.go --reg 127.0.0.1:8500
 
 #### server
-go run main.go --reg 127.0.0.1:8500
+go run example/client/main.go --reg 127.0.0.1:8500
