@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/resolver"
 
 	"github.com/sirupsen/logrus"
-	pb "github.com/wwcd/grpc-lb/cmd/helloworld"
-	grpclb "github.com/wwcd/grpc-lb/etcdv3"
+	pb "github.com/zhangchunsheng/grpc-test/grpc-lb/cmd/helloworld"
+	grpclb "github.com/zhangchunsheng/grpc-test/grpc-lb/etcdv3"
 )
 
 var (
