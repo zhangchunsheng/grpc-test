@@ -159,6 +159,7 @@ func main() {
 	robot.Login(*name)
 	ConsoleLog("登录成功")
 
+    var err error
     err = robot.GetChatStream().Send(&pb.HelloRequest{
         Message: "hello",
     })
