@@ -369,9 +369,15 @@ func main() {
 	}()
 
 	lis, err := net.Listen("tcp", GetListen())
+	if err != nil {
+        return nil, errors.Wrap(err, fmt.Sprintf("net.Listen failed: %s", err.Error()))
+    }
 	fmt.Println("Listen on", GetListen())
 
 	err = grpclb.Register(*srv, "127.0.0.1", *port, *reg, time.Second*3, 15) // 注册当前节点到etcd
+	if err != nil {
+        return nil, errors.Wrap(err, fmt.Sprintf("grpclb.Register failed: %s", err.Error()))
+    }
 	ch := make(chan os.Signal)
 	signal.Notify(ch, syscall.SIGTERM, syscall.SIGINT, syscall.SIGHUP, syscall.SIGQUIT)
 	go func() {
