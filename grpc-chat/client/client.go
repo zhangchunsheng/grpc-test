@@ -23,7 +23,7 @@ import (
 )
 
 var name *string = flag.String("name", "guess", "what's your name?")
-var reg *string = flag.String("reg", "http://127.0.0.1:2479", "register etcd address")
+var reg *string = flag.String("reg", "http://127.0.0.1:2379", "register etcd address")
 var serv *string = flag.String("service", "chat_service", "service name")
 var cert_file *string = flag.String("cert", "", "cert file")
 var mutex sync.Mutex

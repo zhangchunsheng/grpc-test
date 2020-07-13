@@ -255,7 +255,7 @@ func (s *Service) SayHello(stream pb.Greeter_SayHelloServer) error {
 var (
 	srv       = flag.String("service", "chat_service", "service name")
 	port      = flag.Int("port", 8880, "listening port")
-	reg       = flag.String("reg", "http://127.0.0.1:2479", "register etcd address")
+	reg       = flag.String("reg", "http://127.0.0.1:2379", "register etcd address")
 	cert_file = flag.String("cert", "", "cert file")
 	key_file  = flag.String("key", "", "key file")
 )
