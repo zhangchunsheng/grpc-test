@@ -1,4 +1,4 @@
-module github.com/zhangchunsheng/grpc-test/grpc-lb
+module github.com/zhangchunsheng/grpc-test/grpc-go-balance
 
 go 1.12
 
