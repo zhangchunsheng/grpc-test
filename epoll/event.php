@@ -6,6 +6,7 @@
  * Time: 2:46 PM
  */
 // 初始化一个EventConfig
+// sudo yum install php74-php-pecl-event
 $eventConfig = new EventConfig();
 
 // 根据EventConfig初始化一个EventBase
