@@ -166,6 +166,8 @@ func main() {
     fmt.Print("> ")
     if err != nil {
         fmt.Print("there was error sending data. %s", err.Error())
+    } else {
+        fmt.Print("send hello success")
     }
 	// 监听服务端通知
 	go func() {
