@@ -1,4 +1,4 @@
-module github.com/wwcd/grpc-lb
+module github.com/zhangchunsheng/grpc-test/grpc-lb
 
 go 1.12
 
