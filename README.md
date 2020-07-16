@@ -1,6 +1,8 @@
 # grpc-test
 grpc test
 
+https://github.com/wechaty/wechaty/issues/1986
+
 https://github.com/njpatel/grpcc
 
 ```shell script
